@@ -17,7 +17,7 @@ export default class Deck
         {
             for(let value = 0; value < NUM_VALUES; value++)
             {
-                this.cards[suit * NUM_VALUES + value] = Card(value, suit);
+                this.cards[suit * NUM_VALUES + value] = new Card(value, suit);
             }
         }
     }
@@ -27,8 +27,7 @@ export default class Deck
         // calculate each cards weight with a random component
         for(let index_cards = 0; index_cards < NUM_CARDS_DECK; index_cards++)
         {
-            card = this.cards[index_cards];
-            card.weight = Math.random() * weights[card.suit] * weights[WEIGHT_VALUE_OFFSET + card.value];
+            this.cards[index_cards].weight = Math.random() * weights[card.suit] * weights[WEIGHT_VALUE_OFFSET + card.value];
         }
 
         // sort the deck by weight
@@ -36,7 +35,7 @@ export default class Deck
         {
             for(let index_secondary = index_primary + 1; index_secondary < NUM_CARDS_DECK; index_secondary++)
             {
-                card_temporary = this.cards[index_primary];
+                let card_temporary = this.cards[index_primary];
                 this.cards[index_primary] = this.cards[index_secondary];
                 this.cards[index_secondary] = card_temporary;
             }
