@@ -21,7 +21,7 @@ export default class Entity
 
     dealHand(deck)
     {
-        deck.shuffleWeighted(weights);
+        deck.shuffleWeighted(this.weights);
 
         for(index_hand = 0; index_hand < NUM_CARDS_HAND; index_hand++)
         {
