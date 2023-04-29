@@ -46,7 +46,7 @@ export default class Deck
 
     deal()
     {
-        return this.cards[index_deck++];
+        return this.cards[this.index_deck++];
     }
 
     toString()
