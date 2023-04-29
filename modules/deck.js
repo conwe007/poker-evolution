@@ -28,6 +28,7 @@ export default class Deck
         for(let index_cards = 0; index_cards < NUM_CARDS_DECK; index_cards++)
         {
             this.cards[index_cards].weight = Math.random() * weights[this.cards[index_cards].suit] * weights[WEIGHT_VALUE_OFFSET + this.cards[index_cards].value];
+            console.log(this.cards[index_cards].toString() + ' ' + this.cards[index_cards].weight);
         }
 
         // sort the deck by weight
