@@ -32,7 +32,7 @@ export default class Hand
 
         for(let index_cards = 0; index_cards < NUM_CARDS_HAND; index_cards++)
         {
-            cards[index_cards] = new Card(CARD_ERROR, CARD_ERROR);
+            this.cards[index_cards] = new Card(CARD_ERROR, CARD_ERROR);
         }
     }
 
