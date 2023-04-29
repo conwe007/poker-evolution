@@ -3,13 +3,6 @@ const lut_suit = ['c', 'd', 's', 'h'];
 
 export default class Card
 {
-    constructor()
-    {
-        this.value = -1;
-        this.suit = -1;
-        this.weight = 0;
-    }
-
     constructor(value, suit)
     {
         this.value = value;
