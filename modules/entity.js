@@ -23,7 +23,7 @@ export default class Entity
     {
         deck.shuffleWeighted(this.weights);
 
-        for(index_hand = 0; index_hand < NUM_CARDS_HAND; index_hand++)
+        for(let index_hand = 0; index_hand < NUM_CARDS_HAND; index_hand++)
         {
             this.hand.cards[index_hand] = deck.deal();
         }
