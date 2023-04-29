@@ -1,4 +1,5 @@
 import Deck from './modules/deck.js';
+import Entity from './modules/entity.js';
 
 // setup canvas
 const canvas = document.querySelector('canvas');
