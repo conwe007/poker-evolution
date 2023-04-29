@@ -175,4 +175,16 @@ export default class Hand
 
         return true;
     }
+
+    toString()
+    {
+        let output = '';
+
+        for(let index_cards = 0; index_cards < NUM_CARDS_HAND; index_cards++)
+        {
+            output += this.cards[index_cards].toString() + ',';
+        }
+
+        return output;
+    }
 }

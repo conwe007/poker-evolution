@@ -42,10 +42,7 @@ export default class Entity
 
         output += '\n';
 
-        for(let index_hand = 0; index_hand < NUM_CARDS_HAND; index_hand++)
-        {
-            output += this.hand[index_hand].toString() + ',';
-        }
+        output += this.hand.toString();
 
         output += '\n';
 
