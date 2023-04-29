@@ -15,7 +15,7 @@ export default class Entity
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            weights[index_weights] = 0.5;
+            this.weights[index_weights] = 0.5;
         }
     }
 
