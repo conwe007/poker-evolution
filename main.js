@@ -84,8 +84,15 @@ while (balls.length < 25) {
     balls.push(ball);
 }
 
-deck = Deck();
+let weights = [];
+for(let index_weights = 0; index_weights < 17; index_weights++)
+{
+    weights[index_weights] = 0.5;
+}
+
+let deck = new Deck();
 console.log(deck.toString());
+
 
 function loop()
 {

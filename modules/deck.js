@@ -10,12 +10,12 @@ export default class Deck
 {
     constructor()
     {
-        let cards = [];
-        let index_deck = 0;
+        this.cards = [];
+        this.index_deck = 0;
 
-        for(suit = 0; suit < NUM_SUITS; suit++)
+        for(let suit = 0; suit < NUM_SUITS; suit++)
         {
-            for(value = 0; value < NUM_VALUES; value++)
+            for(let value = 0; value < NUM_VALUES; value++)
             {
                 this.cards[suit * NUM_VALUES + value] = Card(value, suit);
             }
@@ -25,16 +25,16 @@ export default class Deck
     shuffleWeighted(weights)
     {
         // calculate each cards weight with a random component
-        for(index_cards = 0; index_cards < NUM_CARDS_DECK; index_cards++)
+        for(let index_cards = 0; index_cards < NUM_CARDS_DECK; index_cards++)
         {
             card = this.cards[index_cards];
             card.weight = Math.random() * weights[card.suit] * weights[WEIGHT_VALUE_OFFSET + card.value];
         }
 
         // sort the deck by weight
-        for(index_primary = 0; index_primary < NUM_CARDS_DECK - 1; index_primary++)
+        for(let index_primary = 0; index_primary < NUM_CARDS_DECK - 1; index_primary++)
         {
-            for(index_secondary = index_primary + 1; index_secondary < NUM_CARDS_DECK; index_secondary++)
+            for(let index_secondary = index_primary + 1; index_secondary < NUM_CARDS_DECK; index_secondary++)
             {
                 card_temporary = this.cards[index_primary];
                 this.cards[index_primary] = this.cards[index_secondary];
@@ -54,9 +54,9 @@ export default class Deck
     {
         let output = '';
 
-        for(suit = 0; suit < NUM_SUITS; suit++)
+        for(let suit = 0; suit < NUM_SUITS; suit++)
         {
-            for(value = 0; value < NUM_VALUES; value++)
+            for(let value = 0; value < NUM_VALUES; value++)
             {
                 output += this.cards[suit * NUM_VALUES + value].toString() + ' ';
             }
