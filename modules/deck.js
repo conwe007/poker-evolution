@@ -27,7 +27,7 @@ export default class Deck
         // calculate each cards weight with a random component
         for(let index_cards = 0; index_cards < NUM_CARDS_DECK; index_cards++)
         {
-            this.cards[index_cards].weight = Math.random() * weights[card.suit] * weights[WEIGHT_VALUE_OFFSET + card.value];
+            this.cards[index_cards].weight = Math.random() * weights[this.cards[index_cards].suit] * weights[WEIGHT_VALUE_OFFSET + this.cards[index_cards].value];
         }
 
         // sort the deck by weight
