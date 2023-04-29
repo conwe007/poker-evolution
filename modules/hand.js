@@ -1,3 +1,4 @@
+import Card from './card.js';
 import Deck from './deck.js';
 
 const NUM_CARDS_HAND = 5;
