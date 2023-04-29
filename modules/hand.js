@@ -16,6 +16,7 @@ const HAND_RANK_FULL_HOUSE = 6;
 const HAND_RANK_FOUR_OF_A_KIND = 7;
 const HAND_RANK_STRAIGHT_FLUSH = 8;
 
+const CARD_ERROR = -1;
 const CARD_VALUE_ACE = 0;
 const CARD_VALUE_TEN = 9;
 const CARD_VALUE_JACK = 10;
@@ -31,7 +32,7 @@ export default class Hand
 
         for(let index_cards = 0; index_cards < NUM_CARDS_HAND; index_cards++)
         {
-            cards[index_cards] = new Card();
+            cards[index_cards] = new Card(CARD_ERROR, CARD_ERROR);
         }
     }
 

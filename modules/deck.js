@@ -59,6 +59,8 @@ export default class Deck
             {
                 output += this.cards[suit * NUM_VALUES + value].toString() + ' ';
             }
+
+            output += '\n';
         }
 
         return output;
