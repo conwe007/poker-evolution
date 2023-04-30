@@ -50,14 +50,15 @@ export default class Population
             for(let index_secondary = index_primary; index_secondary < NUM_ENTITIES; index_secondary++)
             {
                 // calculate distances, keep them squared to improve performance (no call to sqrt)
-                const distance_x = Math.abs(this.entities[index_secondary].x - this.entities[index_primary].x);
-                const distance_y = Math.abs(this.entities[index_secondary].y - this.entities[index_primary].y);
+                const distance_x = this.entities[index_secondary].x - this.entities[index_primary].x;
+                const distance_y = this.entities[index_secondary].y - this.entities[index_primary].y;
                 const distance_squared = Math.sqrt((distance_x * distance_x) + (distance_y * distance_y));
                 const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius);// * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
 
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
                 {
+                    console.log(distance_squared + " " + double_radius_squared);
                     // primary entity wins, reproduce primary
                     if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
                     {
