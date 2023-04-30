@@ -93,18 +93,8 @@ for(let index_weights = 0; index_weights < 17; index_weights++)
 
 let deck = new Deck();
 console.log(deck.toString());
-console.log('\n');
-console.log(Math.random() + '\n');
-console.log(Math.random() + '\n');
-console.log(Math.random() + '\n');
-console.log(Math.random() + '\n');
-
-console.log(Math.random() + '\n');
-
 
 let entity = new Entity();
-deck.shuffleWeighted(entity.weights);
-console.log(deck.toString());
 entity.dealHand(deck);
 console.log(entity.toString());
 

@@ -36,9 +36,12 @@ export default class Deck
         {
             for(let index_secondary = index_primary + 1; index_secondary < NUM_CARDS_DECK; index_secondary++)
             {
-                let card_temporary = this.cards[index_primary];
-                this.cards[index_primary] = this.cards[index_secondary];
-                this.cards[index_secondary] = card_temporary;
+                if(this.cards[index_primary].value > this.cards[index_secondary].value)
+                {
+                    let card_temporary = this.cards[index_primary];
+                    this.cards[index_primary] = this.cards[index_secondary];
+                    this.cards[index_secondary] = card_temporary;
+                }
             }
         }
 
