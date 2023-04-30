@@ -20,7 +20,7 @@ export default class Population
                 randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY),
                 randomInt(0 + DEFAULT_RADIUS_ENTITY, height - DEFAULT_RADIUS_ENTITY)
             );
-            this.entities[index_entities].dealHand(deck);
+            this.entities[index_entities].dealHand(this.deck);
         }
     }
 
