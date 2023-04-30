@@ -65,13 +65,13 @@ export default class Population
                     this.entities[index_secondary].dealHand(this.deck);
 
                     // primary entity wins, reproduce primary and kill secondary
-                    if(Hand.betterHand(this.entities[index_primary].hand, this.entities[index_secondary].hand))
+                    if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
                     {
                         const entity_offspring = this.entities[index_primary].reproduce();
                         this.entities[index_secondary] = entity_offspring;
                     }
                     // secondary entity wins, reproduce secondary and kill primary
-                    else
+                    else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
                     {
                         const entity_offspring = this.entities[index_secondary].reproduce();
                         this.entities[index_primary] = entity_offspring;
