@@ -93,10 +93,21 @@ for(let index_weights = 0; index_weights < 17; index_weights++)
 
 let deck = new Deck();
 
-let entity = new Entity();
+let entity1 = new Entity();
 entity.dealHand(deck);
 console.log(entity.toString());
 
+let entity2 = entity1.reproduce();
+entity2.dealHand(deck);
+console.log(entity2.toString());
+
+let entity3 = entity2.reproduce();
+entity3.dealHand(deck);
+console.log(entity3.toString());
+
+let entity4 = entity3.reproduce();
+entity4.dealHand(deck);
+console.log(entity4.toString());
 
 function loop()
 {
