@@ -77,6 +77,12 @@ export default class Hand
             return HAND_RANK_FLUSH;
         }
 
+        // check for straight
+        if(this.isStraight())
+        {
+            return HAND_RANK_STRAIGHT;
+        }
+
         let counter = [];
         let pairs = 0;
         let triples = 0;
@@ -174,6 +180,24 @@ export default class Hand
         }
 
         return true;
+    }
+
+    // returns true if primary hand is better, false if secondary hand is better
+    static betterHand(primary, secondary)
+    {
+        if(primary.hand_rank > secondary.hand_rank)
+        {
+            return true;
+        }
+        else if(primary.hand_rank < secondary.hand_rank)
+        {
+            return false;
+        }
+        // hand ranks are equal, evaluate which has higher cards
+        else
+        {
+            return true;
+        }
     }
 
     toString()

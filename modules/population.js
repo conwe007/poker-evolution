@@ -1,5 +1,6 @@
 import Deck from './deck.js';
 import Entity from './entity.js';
+import Hand from './hand.js';
 import {width, height} from '../main.js';
 import {NUM_WEIGHTS, DEFAULT_RADIUS_ENTITY} from './entity.js';
 import {randomInt} from './utilities.js';
@@ -58,9 +59,8 @@ export default class Population
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
                 {
-                    //console.log(distance_squared + " " + double_radius_squared);
                     // primary entity wins, reproduce primary
-                    if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
+                    if(Hand.betterHand(this.entities[index_primary].hand, this.entities[index_secondary].hand))
                     {
                         const entity_primary = this.entities[index_primary].reproduce();
                         const entity_secondary = this.entities[index_primary].reproduce();
@@ -69,7 +69,7 @@ export default class Population
                         this.entities[index_secondary] = entity_secondary;
                     }
                     // secondary entity wins, reproduce secondary
-                    else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
+                    else
                     {
                         const entity_primary = this.entities[index_secondary].reproduce();
                         const entity_secondary = this.entities[index_secondary].reproduce();
