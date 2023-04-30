@@ -1,17 +1,34 @@
-import Deck from './deck.js';
 import Hand from './hand.js';
+import {ctx, width, height} from '../main.js';
 
 const NUM_WEIGHTS = 17;
 const NUM_CARDS_HAND = 5;
 
-const WEIGHT_VALUE_OFFSET = 4;
-
-const MUTATION_CHANCE = 0.05;
+const MUTATION_CHANCE = 0.1;
 const MUTATION_MAGNITUDE = 0.01;
+
+const VEL_X_MIN = -7;
+const VEL_X_MAX = 7;
+const VEL_Y_MIN = -7;
+const VEL_Y_MAX = 7;
+
+const DEFAULT_SIZE = 25;
+
+// helper function, returns random int between max and min
+function randomInt(min, max)
+{
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// helper function, generates random color
+function randomRGB()
+{
+    return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+}
 
 export default class Entity
 {
-    constructor(weights)
+    constructor(weights, x, y)
     {
         this.weights = [];
         this.hand = new Hand();
@@ -27,6 +44,13 @@ export default class Entity
         {
             this.weights = weights;
         }
+
+        this.x = x;
+        this.y = y;
+        this.vel_x = randomInt(VEL_X_MIN, VEL_X_MAX);
+        this.vel_y = randomInt(VEL_Y_MIN, VEL_Y_MAX);
+        this.color = randomRGB();
+        this.size = DEFAULT_SIZE;
     }
 
     dealHand(deck)
@@ -76,6 +100,41 @@ export default class Entity
         }
 
         return offspring;
+    }
+
+    draw()
+    {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    update() 
+    {
+        // bounce off of the walls
+        if((this.x + this.size) >= width)
+        {
+            this.vel_x = -(this.vel_x);
+        }
+
+        if((this.x - this.size) <= 0)
+        {
+            this.vel_x = -(this.vel_x);
+        }
+
+        if((this.y + this.size) >= height)
+        {
+            this.vel_y = -(this.vel_y);
+        }
+
+        if((this.y - this.size) <= 0)
+        {
+            this.vel_y = -(this.vel_y);
+        }
+
+        this.x += this.vel_x;
+        this.y += this.vel_y;
     }
 
     toString()
