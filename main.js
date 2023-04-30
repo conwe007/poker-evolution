@@ -7,11 +7,16 @@ const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
+let timer = 0;
+const TIME_FRAME = 16;
+
 const population = new Population();
 let counter = 0;
 
 function loop()
 {
+    timer = Date.now();
+
     ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
     ctx.fillRect(0, 0, width, height);
 
@@ -26,6 +31,7 @@ function loop()
         counter = 0;
     }
 
+    while(Date.now() < timer + TIME_FRAME);
     requestAnimationFrame(loop);
 }
 
