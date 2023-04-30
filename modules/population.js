@@ -59,7 +59,7 @@ export default class Population
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
                 {
-                    console.log(distance_squared);
+                    //console.log(distance_squared);
                     // deal each entity a new hand
                     this.entities[index_primary].dealHand(this.deck);
                     this.entities[index_secondary].dealHand(this.deck);
