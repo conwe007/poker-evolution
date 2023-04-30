@@ -94,8 +94,8 @@ for(let index_weights = 0; index_weights < 17; index_weights++)
 let deck = new Deck();
 
 let entity1 = new Entity();
-entity.dealHand(deck);
-console.log(entity.toString());
+entity1.dealHand(deck);
+console.log(entity1.toString());
 
 let entity2 = entity1.reproduce();
 entity2.dealHand(deck);
