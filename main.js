@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
-const population = Population();
+const population = new Population();
 let counter = 0;
 
 function loop()
