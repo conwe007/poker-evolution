@@ -22,7 +22,6 @@ export default class Entity
     {
         this.weights = [];
         this.hand = new Hand();
-        this.immune_count = 100;
 
         if(weights == null)
         {
@@ -111,11 +110,6 @@ export default class Entity
     // update the position of the entity
     update() 
     {
-        if(this.immune_count > 0)
-        {
-            this.immune_count--;
-        }
-
         // bounce off of the walls
         if((this.x + this.radius) >= width)
         {

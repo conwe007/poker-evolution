@@ -4,7 +4,7 @@ import {width, height} from '../main.js';
 import {NUM_WEIGHTS, DEFAULT_RADIUS_ENTITY} from './entity.js';
 import {randomInt} from './utilities.js';
 
-const NUM_ENTITIES = 16;
+const NUM_ENTITIES = 128;
 
 export default class Population
 {
@@ -47,43 +47,35 @@ export default class Population
     {
         for(let index_primary = 0; index_primary < NUM_ENTITIES - 1; index_primary++)
         {
-            if(this.entities[index_primary].immune_count > 0)
+            for(let index_secondary = index_primary; index_secondary < NUM_ENTITIES; index_secondary++)
             {
-                for(let index_secondary = index_primary; index_secondary < NUM_ENTITIES; index_secondary++)
+                // calculate distances, keep them squared to improve performance (no call to sqrt)
+                const distance_x = this.entities[index_secondary].x - this.entities[index_primary].x;
+                const distance_y = this.entities[index_secondary].y - this.entities[index_primary].y;
+                const distance_squared = (distance_x * distance_x) + (distance_y * distance_y);
+                const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius) * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
+
+                // entities are colliding, the more fit entity reproduces
+                if(distance_squared < double_radius_squared)
                 {
-                    if(this.entities[index_secondary].immune_count > 0)
+                    //console.log(distance_squared + " " + double_radius_squared);
+                    // primary entity wins, reproduce primary
+                    if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
                     {
-                        // calculate distances, keep them squared to improve performance (no call to sqrt)
-                        const distance_x = this.entities[index_secondary].x - this.entities[index_primary].x;
-                        const distance_y = this.entities[index_secondary].y - this.entities[index_primary].y;
-                        const distance_squared = (distance_x * distance_x) + (distance_y * distance_y);
-                        const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius) * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
+                        const entity_primary = this.entities[index_primary].reproduce();
+                        const entity_secondary = this.entities[index_primary].reproduce();
 
-                        // entities are colliding, the more fit entity reproduces
-                        if(distance_squared < double_radius_squared)
-                        {
-                            //console.log(distance_squared + " " + double_radius_squared);
-                            // primary entity wins, reproduce primary
-                            if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
-                            {
-                                const entity_primary = this.entities[index_primary].reproduce();
-                                const entity_secondary = this.entities[index_primary].reproduce();
+                        this.entities[index_primary] = entity_primary;
+                        this.entities[index_secondary] = entity_secondary;
+                    }
+                    // secondary entity wins, reproduce secondary
+                    else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
+                    {
+                        const entity_primary = this.entities[index_secondary].reproduce();
+                        const entity_secondary = this.entities[index_secondary].reproduce();
 
-                                console.log(entity_primary.x + ' ' + entity_secondary.x);
-
-                                this.entities[index_primary] = entity_primary;
-                                this.entities[index_secondary] = entity_secondary;
-                            }
-                            // secondary entity wins, reproduce secondary
-                            else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
-                            {
-                                const entity_primary = this.entities[index_secondary].reproduce();
-                                const entity_secondary = this.entities[index_secondary].reproduce();
-
-                                this.entities[index_primary] = entity_primary;
-                                this.entities[index_secondary] = entity_secondary;
-                            }
-                        }
+                        this.entities[index_primary] = entity_primary;
+                        this.entities[index_secondary] = entity_secondary;
                     }
                 }
             }
