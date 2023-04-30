@@ -5,7 +5,7 @@ import {width, height} from '../main.js';
 import {NUM_WEIGHTS, DEFAULT_RADIUS_ENTITY} from './entity.js';
 import {randomInt} from './utilities.js';
 
-const NUM_ENTITIES = 32;
+const NUM_ENTITIES = 128;
 
 export default class Population
 {
@@ -69,12 +69,22 @@ export default class Population
                     {
                         const entity_offspring = this.entities[index_primary].reproduce();
                         this.entities[index_secondary] = entity_offspring;
+
+                        if(this.entities[index_primary].x == this.entities[index_secondary].x)
+                        {
+                            console.log('here');
+                        }
                     }
                     // secondary entity wins, reproduce secondary and kill primary
                     else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
                     {
                         const entity_offspring = this.entities[index_secondary].reproduce();
                         this.entities[index_primary] = entity_offspring;
+
+                        if(this.entities[index_primary].x == this.entities[index_secondary].x)
+                        {
+                            console.log('here');
+                        }
                     }
                 }
             }
