@@ -8,6 +8,12 @@ export const ctx = canvas.getContext('2d');
 export const width = canvas.width = window.innerWidth;
 export const height = canvas.height = window.innerHeight;
 
+// helper function, returns random int between max and min
+function randomInt(min, max)
+{
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // // function to generate random number
 // function random(min, max) {
 //     const num = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -91,8 +97,8 @@ for(let index_entities = 0; index_entities < 25; index_entities++)
 {
     entities[index_entities] = new Entity(
         null,
-        random(0 + size, width - size),
-        random(0 + size, height - size)
+        randomInt(0 + size, width - size),
+        randomInt(0 + size, height - size)
     );
 }
 
