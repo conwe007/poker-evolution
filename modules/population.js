@@ -52,8 +52,8 @@ export default class Population
                 // calculate distances, keep them squared to improve performance (no call to sqrt)
                 const distance_x = Math.abs(this.entities[index_secondary].x - this.entities[index_primary].x);
                 const distance_y = Math.abs(this.entities[index_secondary].y - this.entities[index_primary].y);
-                const distance_squared = (distance_x * distance_x) + (distance_y * distance_y);
-                const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius) * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
+                const distance_squared = Math.sqrt((distance_x * distance_x) + (distance_y * distance_y));
+                const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius);// * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
 
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
