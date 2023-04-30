@@ -5,7 +5,7 @@ import {width, height} from '../main.js';
 import {NUM_WEIGHTS, DEFAULT_RADIUS_ENTITY} from './entity.js';
 import {randomInt} from './utilities.js';
 
-const NUM_ENTITIES = 32;
+const NUM_ENTITIES = 256;
 
 export default class Population
 {
@@ -59,7 +59,6 @@ export default class Population
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
                 {
-                    //console.log(distance_squared);
                     // deal each entity a new hand
                     this.entities[index_primary].dealHand(this.deck);
                     this.entities[index_secondary].dealHand(this.deck);
@@ -71,7 +70,7 @@ export default class Population
                         this.entities[index_secondary] = entity_offspring;
                     }
                     // secondary entity wins, reproduce secondary and kill primary
-                    else //if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
+                    else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
                     {
                         const entity_offspring = this.entities[index_secondary].reproduce();
                         this.entities[index_primary] = entity_offspring;
