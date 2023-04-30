@@ -1,5 +1,6 @@
 import Hand from './hand.js';
 import {ctx, width, height} from '../main.js';
+import {randomInt, randomRGB} from './utilities.js';
 
 const NUM_WEIGHTS = 17;
 const NUM_CARDS_HAND = 5;
@@ -12,19 +13,7 @@ const VEL_X_MAX = 7;
 const VEL_Y_MIN = -7;
 const VEL_Y_MAX = 7;
 
-const DEFAULT_SIZE = 25;
-
-// helper function, returns random int between max and min
-function randomInt(min, max)
-{
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// helper function, generates random color
-function randomRGB()
-{
-    return `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-}
+const DEFAULT_RADIUS_ENTITY = 10;
 
 export default class Entity
 {
@@ -50,9 +39,10 @@ export default class Entity
         this.vel_x = randomInt(VEL_X_MIN, VEL_X_MAX);
         this.vel_y = randomInt(VEL_Y_MIN, VEL_Y_MAX);
         this.color = randomRGB();
-        this.size = DEFAULT_SIZE;
+        this.radius = DEFAULT_RADIUS_ENTITY;
     }
 
+    // shuffles the deck and deals 5 cards into entity's hand
     dealHand(deck)
     {
         deck.shuffleWeighted(this.weights);
@@ -65,9 +55,14 @@ export default class Entity
         this.hand.evaluate();
     }
 
+    // creates a new entity based on current entity's weights and mutates the new entity
     reproduce()
     {
-        let offspring = new Entity(this.weights);
+        const offspring = new Entity(
+            this.weights,
+            randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY),
+            randomInt(0 + DEFAULT_RADIUS_ENTITY, height - DEFAULT_RADIUS_ENTITY)
+        );
 
         // loop through each weight and possibly mutate
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
@@ -102,33 +97,35 @@ export default class Entity
         return offspring;
     }
 
+    // draw the entity to the screen
     draw()
     {
         ctx.beginPath();
         ctx.fillStyle = this.color;
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fill();
     }
 
+    // update the position of the entity
     update() 
     {
         // bounce off of the walls
-        if((this.x + this.size) >= width)
+        if((this.x + this.radius) >= width)
         {
             this.vel_x = -(this.vel_x);
         }
 
-        if((this.x - this.size) <= 0)
+        if((this.x - this.radius) <= 0)
         {
             this.vel_x = -(this.vel_x);
         }
 
-        if((this.y + this.size) >= height)
+        if((this.y + this.radius) >= height)
         {
             this.vel_y = -(this.vel_y);
         }
 
-        if((this.y - this.size) <= 0)
+        if((this.y - this.radius) <= 0)
         {
             this.vel_y = -(this.vel_y);
         }
@@ -137,6 +134,7 @@ export default class Entity
         this.y += this.vel_y;
     }
 
+    // returns string with weights, hand, and hand rank
     toString()
     {
         let output = '';
@@ -157,3 +155,5 @@ export default class Entity
         return output;
     }
 }
+
+export {DEFAULT_RADIUS_ENTITY, NUM_WEIGHTS};
