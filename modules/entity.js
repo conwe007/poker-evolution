@@ -35,8 +35,8 @@ export default class Entity
             this.weights = weights;
         }
 
-        this.x = x;
-        this.y = y;
+        this.x = randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY);
+        this.y = randomInt(0 + DEFAULT_RADIUS_ENTITY, height - DEFAULT_RADIUS_ENTITY);
         this.vel_x = randomInt(VEL_X_MIN, VEL_X_MAX);
         this.vel_y = randomInt(VEL_Y_MIN, VEL_Y_MAX);
         this.color = randomRGB();
