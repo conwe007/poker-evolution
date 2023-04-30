@@ -72,7 +72,7 @@ export default class Population
                                 console.log(entity_primary.x + ' ' + entity_secondary.x);
 
                                 this.entities[index_primary] = entity_primary;
-                                this.entities[index_primary] = entity_secondary;
+                                this.entities[index_secondary] = entity_secondary;
                             }
                             // secondary entity wins, reproduce secondary
                             else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
@@ -81,7 +81,7 @@ export default class Population
                                 const entity_secondary = this.entities[index_secondary].reproduce();
 
                                 this.entities[index_primary] = entity_primary;
-                                this.entities[index_primary] = entity_secondary;
+                                this.entities[index_secondary] = entity_secondary;
                             }
                         }
                     }
