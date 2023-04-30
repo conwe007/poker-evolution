@@ -48,7 +48,7 @@ export default class Population
     {
         for(let index_primary = 0; index_primary < NUM_ENTITIES - 1; index_primary++)
         {
-            for(let index_secondary = index_primary; index_secondary < NUM_ENTITIES; index_secondary++)
+            for(let index_secondary = index_primary + 1; index_secondary < NUM_ENTITIES; index_secondary++)
             {
                 // calculate distances, keep them squared to improve performance (no call to sqrt)
                 const distance_x = this.entities[index_secondary].x - this.entities[index_primary].x;
