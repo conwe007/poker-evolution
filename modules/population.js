@@ -5,7 +5,7 @@ import {width, height} from '../main.js';
 import {NUM_WEIGHTS, DEFAULT_RADIUS_ENTITY} from './entity.js';
 import {randomInt} from './utilities.js';
 
-const NUM_ENTITIES = 128;
+const NUM_ENTITIES = 32;
 
 export default class Population
 {
