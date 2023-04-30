@@ -62,20 +62,12 @@ export default class Population
                     // primary entity wins, reproduce primary
                     if(Hand.betterHand(this.entities[index_primary].hand, this.entities[index_secondary].hand))
                     {
-                        const entity_primary = this.entities[index_primary].reproduce();
-                        const entity_secondary = this.entities[index_primary].reproduce();
-
-                        this.entities[index_primary] = entity_primary;
-                        this.entities[index_secondary] = entity_secondary;
+                        this.entities[index_secondary] = this.entities[index_primary].reproduce();
                     }
                     // secondary entity wins, reproduce secondary
                     else
                     {
-                        const entity_primary = this.entities[index_secondary].reproduce();
-                        const entity_secondary = this.entities[index_secondary].reproduce();
-
-                        this.entities[index_primary] = entity_primary;
-                        this.entities[index_secondary] = entity_secondary;
+                        this.entities[index_primary] = this.entities[index_secondary].reproduce();
                     }
                 }
             }
