@@ -59,6 +59,10 @@ export default class Population
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
                 {
+                    // deal each entity a new hand
+                    this.entities[index_primary].dealHand(this.deck);
+                    this.entities[index_secondary].dealHand(this.deck);
+
                     // primary entity wins, reproduce primary and kill secondary
                     if(Hand.betterHand(this.entities[index_primary].hand, this.entities[index_secondary].hand))
                     {
@@ -114,21 +118,21 @@ export default class Population
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            output += Number.parseFloat(min_weights[index_weights]).toFixed(2) + ',';
+            output += (Math.round(min_weights[index_weights] * 100) / 100) + ',';
         }
 
         output += '\n';
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            output += Number.parseFloat(mean_weights[index_weights]).toFixed(2) + ',';
+            output += (Math.round(mean_weights[index_weights] * 100) / 100) + ',';
         }
 
         output += '\n';
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            output += Number.parseFloat(max_weights[index_weights]).toFixed(2) + ',';
+            output += (Math.round(max_weights[index_weights] * 100) / 100) + ',';
         }
 
         return output;
