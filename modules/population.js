@@ -47,35 +47,41 @@ export default class Population
     {
         for(let index_primary = 0; index_primary < NUM_ENTITIES - 1; index_primary++)
         {
-            for(let index_secondary = index_primary; index_secondary < NUM_ENTITIES; index_secondary++)
+            if(this.entities[index_primary].immune_count > 0)
             {
-                // calculate distances, keep them squared to improve performance (no call to sqrt)
-                const distance_x = this.entities[index_secondary].x - this.entities[index_primary].x;
-                const distance_y = this.entities[index_secondary].y - this.entities[index_primary].y;
-                const distance_squared = Math.sqrt((distance_x * distance_x) + (distance_y * distance_y));
-                const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius);// * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
-
-                // entities are colliding, the more fit entity reproduces
-                if(distance_squared < double_radius_squared)
+                for(let index_secondary = index_primary; index_secondary < NUM_ENTITIES; index_secondary++)
                 {
-                    console.log(distance_squared + " " + double_radius_squared);
-                    // primary entity wins, reproduce primary
-                    if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
+                    if(this.entities[index_secondary].immune_count > 0)
                     {
-                        const entity_primary = this.entities[index_primary].reproduce();
-                        const entity_secondary = this.entities[index_primary].reproduce();
+                        // calculate distances, keep them squared to improve performance (no call to sqrt)
+                        const distance_x = this.entities[index_secondary].x - this.entities[index_primary].x;
+                        const distance_y = this.entities[index_secondary].y - this.entities[index_primary].y;
+                        const distance_squared = Math.sqrt((distance_x * distance_x) + (distance_y * distance_y));
+                        const double_radius_squared = (this.entities[index_primary].radius + this.entities[index_secondary].radius);// * (this.entities[index_primary].radius + this.entities[index_secondary].radius);
 
-                        this.entities[index_primary] = entity_primary;
-                        this.entities[index_primary] = entity_secondary;
-                    }
-                    // secondary entity wins, reproduce secondary
-                    else
-                    {
-                        const entity_primary = this.entities[index_secondary].reproduce();
-                        const entity_secondary = this.entities[index_secondary].reproduce();
+                        // entities are colliding, the more fit entity reproduces
+                        if(distance_squared < double_radius_squared)
+                        {
+                            console.log(distance_squared + " " + double_radius_squared);
+                            // primary entity wins, reproduce primary
+                            if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
+                            {
+                                const entity_primary = this.entities[index_primary].reproduce();
+                                const entity_secondary = this.entities[index_primary].reproduce();
 
-                        this.entities[index_primary] = entity_primary;
-                        this.entities[index_primary] = entity_secondary;
+                                this.entities[index_primary] = entity_primary;
+                                this.entities[index_primary] = entity_secondary;
+                            }
+                            // secondary entity wins, reproduce secondary
+                            else
+                            {
+                                const entity_primary = this.entities[index_secondary].reproduce();
+                                const entity_secondary = this.entities[index_secondary].reproduce();
+
+                                this.entities[index_primary] = entity_primary;
+                                this.entities[index_primary] = entity_secondary;
+                            }
+                        }
                     }
                 }
             }

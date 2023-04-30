@@ -14,6 +14,7 @@ const VEL_Y_MIN = -7;
 const VEL_Y_MAX = 7;
 
 const DEFAULT_RADIUS_ENTITY = 10;
+const IMMUNE_COUNT_INITIAL = 100;
 
 export default class Entity
 {
@@ -21,6 +22,7 @@ export default class Entity
     {
         this.weights = [];
         this.hand = new Hand();
+        this.immune_count = 100;
 
         if(weights == null)
         {
@@ -109,6 +111,11 @@ export default class Entity
     // update the position of the entity
     update() 
     {
+        if(this.immune_count > 0)
+        {
+            this.immune_count--;
+        }
+
         // bounce off of the walls
         if((this.x + this.radius) >= width)
         {
