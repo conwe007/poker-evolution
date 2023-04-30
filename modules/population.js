@@ -75,7 +75,7 @@ export default class Population
                                 this.entities[index_primary] = entity_secondary;
                             }
                             // secondary entity wins, reproduce secondary
-                            else
+                            else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
                             {
                                 const entity_primary = this.entities[index_secondary].reproduce();
                                 const entity_secondary = this.entities[index_secondary].reproduce();
