@@ -59,12 +59,12 @@ export default class Population
                 // entities are colliding, the more fit entity reproduces
                 if(distance_squared < double_radius_squared)
                 {
-                    // primary entity wins, reproduce primary
+                    // primary entity wins, reproduce primary and kill secondary
                     if(Hand.betterHand(this.entities[index_primary].hand, this.entities[index_secondary].hand))
                     {
                         this.entities[index_secondary] = this.entities[index_primary].reproduce();
                     }
-                    // secondary entity wins, reproduce secondary
+                    // secondary entity wins, reproduce secondary and kill primary
                     else
                     {
                         this.entities[index_primary] = this.entities[index_secondary].reproduce();
@@ -114,21 +114,21 @@ export default class Population
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            output += min_weights[index_weights] + ',';
+            output += Number.parseFloat(min_weights[index_weights]).toFixed(2) + ',';
         }
 
         output += '\n';
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            output += mean_weights[index_weights] + ',';
+            output += Number.parseFloat(mean_weights[index_weights]).toFixed(2) + ',';
         }
 
         output += '\n';
 
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
         {
-            output += max_weights[index_weights] + ',';
+            output += Number.parseFloat(max_weights[index_weights]).toFixed(2) + ',';
         }
 
         return output;
