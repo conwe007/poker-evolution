@@ -62,12 +62,14 @@ export default class Population
                         // entities are colliding, the more fit entity reproduces
                         if(distance_squared < double_radius_squared)
                         {
-                            console.log(distance_squared + " " + double_radius_squared);
+                            //console.log(distance_squared + " " + double_radius_squared);
                             // primary entity wins, reproduce primary
                             if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
                             {
                                 const entity_primary = this.entities[index_primary].reproduce();
                                 const entity_secondary = this.entities[index_primary].reproduce();
+
+                                console.log(entity_primary.x + ' ' + entity_secondary.x);
 
                                 this.entities[index_primary] = entity_primary;
                                 this.entities[index_primary] = entity_secondary;
@@ -81,10 +83,6 @@ export default class Population
                                 this.entities[index_primary] = entity_primary;
                                 this.entities[index_primary] = entity_secondary;
                             }
-                        }
-                        else
-                        {
-                            console.log(distance_squared);
                         }
                     }
                 }
