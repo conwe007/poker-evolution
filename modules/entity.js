@@ -23,7 +23,7 @@ function randomInt(min, max)
 // helper function, generates random color
 function randomRGB()
 {
-    return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+    return `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 }
 
 export default class Entity
