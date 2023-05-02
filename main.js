@@ -33,7 +33,16 @@ function loop()
 //loop();
 
 const shuffle_test = new ShuffleTest();
-ShuffleTest.run();
+shuffle_test.run();
 console.log(shuffle_test.toStringStats());
+
+shuffle_test.clear();
+shuffle_test.entity.weights[0] = 0.75;
+shuffle_test.entity.weights[1] = 0.25;
+shuffle_test.entity.weights[2] = 0.25;
+shuffle_test.entity.weights[3] = 0.25;
+shuffle_test.run();
+console.log(shuffle_test.toStringStats());
+shuffle_test.clear();
 
 export {ctx, width, height};

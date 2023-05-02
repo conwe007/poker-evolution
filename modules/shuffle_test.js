@@ -32,6 +32,14 @@ export default class ShuffleTest
         }
     }
 
+    clear()
+    {
+        for(let index_ranks = 0; index_ranks < NUM_RANKS; index_ranks++)
+        {
+            this.ranks[index_ranks] = 0;
+        }
+    }
+
 
 
 
