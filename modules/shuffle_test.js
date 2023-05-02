@@ -22,7 +22,7 @@ export default class ShuffleTest
     {
         for(let index_trial = 0; index_trial < NUM_TRIALS; index_trial++)
         {
-            this.entity.dealHand(deck);
+            this.entity.dealHand(this.deck);
             this.ranks[this.entity.hand.hand_rank]++;
         }
 
