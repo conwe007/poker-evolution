@@ -39,7 +39,7 @@ export default class ShuffleTest
 
         for(let index_ranks = 0; index_ranks < NUM_RANKS; index_ranks++)
         {
-            this.ranks[index_ranks] /= NUM_RANKS;
+            this.ranks[index_ranks] /= NUM_TRIALS;
         }
     }
 
@@ -58,9 +58,9 @@ export default class ShuffleTest
     {
         let output = '';
 
-        output += LUT_WEIGHTS.toString();
+        output += LUT_WEIGHTS.toString() + '\n';
         output += this.entity.weights.toString() + '\n';
-        output += LUT_HAND_RANK.toString();
+        output += LUT_HAND_RANK.toString() + '\n';
         output += this.ranks.toString();
 
         return output;
