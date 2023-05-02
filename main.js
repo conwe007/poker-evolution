@@ -1,4 +1,5 @@
 import Population from './modules/population.js';
+import ShuffleTest from './modules/shuffle_test.js';
 
 // setup canvas
 const canvas = document.querySelector('canvas');
@@ -29,6 +30,10 @@ function loop()
     requestAnimationFrame(loop);
 }
 
-loop();
+//loop();
+
+const shuffle_test = new ShuffleTest();
+ShuffleTest.run();
+console.log(shuffle_test.toStringStats());
 
 export {ctx, width, height};
