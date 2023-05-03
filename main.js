@@ -43,6 +43,14 @@ shuffle_test.entity.weights[2] = 0.25;
 shuffle_test.entity.weights[3] = 0.25;
 shuffle_test.run();
 console.log(shuffle_test.toStringStats());
+
+shuffle_test.clear();
+shuffle_test.entity.weights[7] = 0.75;
+shuffle_test.entity.weights[9] = 0.25;
+shuffle_test.entity.weights[10] = 0.25;
+shuffle_test.entity.weights[11] = 0.25;
+shuffle_test.run();
+console.log(shuffle_test.toStringStats());
 shuffle_test.clear();
 
 export {ctx, width, height};

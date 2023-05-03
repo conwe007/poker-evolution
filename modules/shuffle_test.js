@@ -1,5 +1,5 @@
 import Deck from './deck.js';
-import Entity from './entity.js';
+import Entity, { NUM_WEIGHTS } from './entity.js';
 
 const NUM_RANKS = 9;
 const NUM_TRIALS = 10000;
@@ -48,6 +48,11 @@ export default class ShuffleTest
         for(let index_ranks = 0; index_ranks < NUM_RANKS; index_ranks++)
         {
             this.ranks[index_ranks] = 0;
+        }
+
+        for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
+        {
+            this.entity.weights[index_weights] = 0.5;
         }
     }
 
