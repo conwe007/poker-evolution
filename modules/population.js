@@ -5,7 +5,7 @@ import {width, height} from '../main.js';
 import {NUM_WEIGHTS, DEFAULT_RADIUS_ENTITY} from './entity.js';
 import {randomInt} from './utilities.js';
 
-const NUM_ENTITIES = 256;
+const NUM_ENTITIES = 32;
 
 export default class Population
 {
@@ -178,5 +178,23 @@ export default class Population
         }
 
         return output;
+    }
+
+    toStringWeights()
+    {
+        let output = '';
+
+        for(let index_entities = 0; index_entities < NUM_ENTITIES; index_entities++)
+        {
+            for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
+            {
+                output += this.entities[index_entities].weights[index_weights] + ',';
+            }
+
+            output += '\n';
+        }
+
+        return output;
+
     }
 }

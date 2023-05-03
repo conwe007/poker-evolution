@@ -1,6 +1,6 @@
 import Population from './population.js';
 
-const COUNTER_MAX = 100;
+const COUNTER_MAX = 10;
 
 export default class Simulation
 {
@@ -43,7 +43,7 @@ export default class Simulation
                 {
                     counter = 0;
                     //console.log(generation);
-                    //onsole.log(this.population.toStringStats());
+                    console.log(this.population.toStringWeights());
                 }
             }
         }

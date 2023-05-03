@@ -58,7 +58,6 @@ export default class Entity
     // creates a new entity based on current entity's weights and mutates the new entity
     reproduce()
     {
-        console.log('here');
         const offspring = new Entity(
             this.weights,
             randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY),
@@ -152,6 +151,19 @@ export default class Entity
         output += '\n';
 
         output += this.hand.hand_rank;
+
+        return output;
+    }
+
+    // returns string of just weights
+    toStringWeights()
+    {
+        let output = '';
+
+        for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
+        {
+            output += this.weights[index_weights] + ',';
+        }
 
         return output;
     }
