@@ -55,6 +55,6 @@ function loop()
 // shuffle_test.clear();
 
 const simulation = new Simulation()
-simulation.run(200);
+simulation.run(10000);
 
 export {ctx, width, height};
