@@ -5,8 +5,8 @@ import {randomInt, randomRGB} from './utilities.js';
 const NUM_WEIGHTS = 17;
 const NUM_CARDS_HAND = 5;
 
-const MUTATION_CHANCE = 0.1;
-const MUTATION_MAGNITUDE = 0.01;
+const MUTATION_CHANCE = 0.5;
+const MUTATION_MAGNITUDE = 0.02;
 
 const VEL_X_MIN = -7;
 const VEL_X_MAX = 7;
