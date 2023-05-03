@@ -188,7 +188,7 @@ export default class Population
         {
             for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
             {
-                output += this.entities[index_entities].weights[index_weights] + ',';
+                output += (Math.round(this.entities[index_entities].weights[index_weights] * 100) / 100) + ',';
             }
 
             output += '\n';
