@@ -58,6 +58,7 @@ export default class Entity
     // creates a new entity based on current entity's weights and mutates the new entity
     reproduce()
     {
+        console.log('here');
         const offspring = new Entity(
             this.weights,
             randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY),
