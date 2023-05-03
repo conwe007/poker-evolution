@@ -1,6 +1,6 @@
 import Population from './population.js';
 
-const COUNTER_MAX = 1000;
+const COUNTER_MAX = 100;
 
 export default class Simulation
 {
