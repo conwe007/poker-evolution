@@ -22,11 +22,12 @@ export default class Simulation
                 counter++;
                 generation++;
 
-                if(counter > COUNTER_MAX)
+                if(counter == COUNTER_MAX)
                 {
                     counter = 0;
                     console.log(generation);
                     console.log(this.population.toStringStats());
+                    console.log(this.population.toStringWeights());
                 }
             }
         }
@@ -37,13 +38,13 @@ export default class Simulation
                 this.population.reproduceSim();
                 counter++;
                 generation++;
-                //console.log(generation);
 
-                if(counter > COUNTER_MAX)
+                if(counter == COUNTER_MAX)
                 {
                     counter = 0;
                     console.log(generation);
                     console.log(this.population.toStringStats());
+                    console.log(this.population.toStringWeights());
                 }
             }
         }
