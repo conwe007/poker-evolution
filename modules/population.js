@@ -80,6 +80,46 @@ export default class Population
         }
     }
 
+    // reorders entities within the population array
+    shuffle()
+    {
+        for(let index_entity = 0; index_entity < NUM_ENTITIES; index_entity++)
+        {
+            const index_new = randomInt(0, NUM_ENTITIES - 1);
+            const entity_temp = this.entities[index_entity];
+            this.entities[index_entity] = this.entities[index_new];
+            this.entities[index_new] = entity_temp;
+        }
+    }
+
+    // reproduce without graphical representation or collision detection
+    reproduceSim()
+    {
+        this.shuffle();
+
+        for(let index_primary = 0; index_primary < Math.floor(NUM_ENTITIES / 2); index_primary++)
+        {
+            const index_secondary = index_primary + Math.floor(NUM_ENTITIES / 2);
+            
+            // deal each entity a new hand
+            this.entities[index_primary].dealHand(this.deck);
+            this.entities[index_secondary].dealHand(this.deck);
+
+            // primary entity wins, reproduce primary and kill secondary
+            if(this.entities[index_primary].hand.hand_rank > this.entities[index_secondary].hand.hand_rank)
+            {
+                const entity_offspring = this.entities[index_primary].reproduce();
+                this.entities[index_secondary] = entity_offspring;
+            }
+            // secondary entity wins, reproduce secondary and kill primary
+            else if(this.entities[index_primary].hand.hand_rank < this.entities[index_secondary].hand.hand_rank)
+            {
+                const entity_offspring = this.entities[index_secondary].reproduce();
+                this.entities[index_primary] = entity_offspring;
+            }
+        }
+    }
+
     // return string of average weight stats for the population
     toStringStats()
     {

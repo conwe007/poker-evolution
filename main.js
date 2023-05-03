@@ -32,25 +32,28 @@ function loop()
 
 //loop();
 
-const shuffle_test = new ShuffleTest();
-shuffle_test.run();
-console.log(shuffle_test.toStringStats());
+// const shuffle_test = new ShuffleTest();
+// shuffle_test.run();
+// console.log(shuffle_test.toStringStats());
 
-shuffle_test.clear();
-shuffle_test.entity.weights[0] = 0.75;
-shuffle_test.entity.weights[1] = 0.25;
-shuffle_test.entity.weights[2] = 0.25;
-shuffle_test.entity.weights[3] = 0.25;
-shuffle_test.run();
-console.log(shuffle_test.toStringStats());
+// shuffle_test.clear();
+// shuffle_test.entity.weights[0] = 0.75;
+// shuffle_test.entity.weights[1] = 0.25;
+// shuffle_test.entity.weights[2] = 0.25;
+// shuffle_test.entity.weights[3] = 0.25;
+// shuffle_test.run();
+// console.log(shuffle_test.toStringStats());
 
-shuffle_test.clear();
-shuffle_test.entity.weights[7] = 0.75;
-shuffle_test.entity.weights[9] = 0.25;
-shuffle_test.entity.weights[10] = 0.25;
-shuffle_test.entity.weights[11] = 0.25;
-shuffle_test.run();
-console.log(shuffle_test.toStringStats());
-shuffle_test.clear();
+// shuffle_test.clear();
+// shuffle_test.entity.weights[7] = 0.75;
+// shuffle_test.entity.weights[9] = 0.25;
+// shuffle_test.entity.weights[10] = 0.25;
+// shuffle_test.entity.weights[11] = 0.25;
+// shuffle_test.run();
+// console.log(shuffle_test.toStringStats());
+// shuffle_test.clear();
+
+const simulation = new Simulation()
+simulation.run(10000);
 
 export {ctx, width, height};
