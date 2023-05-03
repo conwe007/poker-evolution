@@ -1,5 +1,6 @@
 import Population from './modules/population.js';
 import ShuffleTest from './modules/shuffle_test.js';
+import Simulation from './modules/simulation.js';
 
 // setup canvas
 const canvas = document.querySelector('canvas');
