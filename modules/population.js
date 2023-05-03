@@ -95,7 +95,7 @@ export default class Population
     // reproduce without graphical representation or collision detection
     reproduceSim()
     {
-        this.shuffle();
+        //this.shuffle();
 
         for(let index_primary = 0; index_primary < Math.floor(NUM_ENTITIES / 2); index_primary++)
         {
