@@ -16,11 +16,7 @@ export default class Population
         
         for(let index_entities = 0; index_entities < NUM_ENTITIES; index_entities++)
         {
-            this.entities[index_entities] = new Entity(
-                null,
-                randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY),
-                randomInt(0 + DEFAULT_RADIUS_ENTITY, height - DEFAULT_RADIUS_ENTITY)
-            );
+            this.entities[index_entities] = new Entity();
             this.entities[index_entities].dealHand(this.deck);
         }
     }
@@ -86,8 +82,8 @@ export default class Population
         for(let index_entity = 0; index_entity < NUM_ENTITIES; index_entity++)
         {
             const index_new = randomInt(0, NUM_ENTITIES - 1);
-            const entity_temp = this.entities[index_entity];
-            this.entities[index_entity] = this.entities[index_new];
+            const entity_temp = this.entities[index_entity].clone();
+            this.entities[index_entity] = this.entities[index_new].clone();
             this.entities[index_new] = entity_temp;
         }
     }
@@ -95,7 +91,7 @@ export default class Population
     // reproduce without graphical representation or collision detection
     reproduceSim()
     {
-        //this.shuffle();
+        this.shuffle();
 
         for(let index_primary = 0; index_primary < Math.floor(NUM_ENTITIES / 2); index_primary++)
         {

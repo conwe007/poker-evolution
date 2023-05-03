@@ -17,7 +17,7 @@ const DEFAULT_RADIUS_ENTITY = 10;
 
 export default class Entity
 {
-    constructor(weights, x, y)
+    constructor(weights)
     {
         this.weights = [];
         this.hand = new Hand();
@@ -31,7 +31,10 @@ export default class Entity
         }
         else
         {
-            this.weights = weights;
+            for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
+            {
+                this.weights[index_weights] = weights[index_weights];
+            }
         }
 
         this.x = randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY);
@@ -58,11 +61,7 @@ export default class Entity
     // creates a new entity based on current entity's weights and mutates the new entity
     reproduce()
     {
-        const offspring = new Entity(
-            this.weights,
-            randomInt(0 + DEFAULT_RADIUS_ENTITY, width - DEFAULT_RADIUS_ENTITY),
-            randomInt(0 + DEFAULT_RADIUS_ENTITY, height - DEFAULT_RADIUS_ENTITY)
-        );
+        const offspring = new Entity(this.weights);
 
         // loop through each weight and possibly mutate
         for(let index_weights = 0; index_weights < NUM_WEIGHTS; index_weights++)
@@ -132,6 +131,11 @@ export default class Entity
 
         this.x += this.vel_x;
         this.y += this.vel_y;
+    }
+
+    clone()
+    {
+        return new Entity(this.weights);
     }
 
     // returns string with weights, hand, and hand rank
