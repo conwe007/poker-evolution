@@ -46,15 +46,17 @@ export default class ShuffleTest
     static duel(entity1, entity2)
     {
         let output = '';
-        
+
+        const deck = new Deck();
+
         let entity1_wins = 0;
         let entity2_wins = 0;
         let entity_tie = 0;
 
         for(let index_trial = 0; index_trial < NUM_TRIALS; index_trial++)
         {
-            entity1.dealHand();
-            entity2.dealHand();
+            entity1.dealHand(deck);
+            entity2.dealHand(deck);
 
             if(entity1.hand.hand_rank > entity2.hand.hand_rank)
             {
