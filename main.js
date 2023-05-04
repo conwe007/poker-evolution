@@ -61,10 +61,11 @@ function loop()
 const entity1 = new Entity();
 const entity2 = new Entity();
 
-entity1.weights[0] = 0.75;
-entity1.weights[1] = 0.25;
-entity1.weights[2] = 0.25;
-entity1.weights[3] = 0.25;
+// entity1.weights[0] = 0.75;
+// entity1.weights[1] = 0.25;
+// entity1.weights[2] = 0.25;
+// entity1.weights[3] = 0.25;
+entity1.weights[4] = 0.75
 
 console.log(ShuffleTest.duel(entity1, entity2));
 

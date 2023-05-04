@@ -2,7 +2,7 @@ import Deck from './deck.js';
 import Entity, { NUM_WEIGHTS } from './entity.js';
 
 const NUM_RANKS = 9;
-const NUM_TRIALS = 10000;
+const NUM_TRIALS = 100000;
 const HAND_RANK_HIGH_CARD = 0;
 const HAND_RANK_PAIR = 1;
 const HAND_RANK_TWO_PAIR = 2;
