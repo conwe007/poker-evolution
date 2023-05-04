@@ -79,6 +79,8 @@ entity1.weights[14] = 0.05;
 entity1.weights[15] = 0.05;
 entity1.weights[16] = 0.05;
 
+console.log(entity1.toString());
+console.log(entity2.toString());
 console.log(ShuffleTest.duel(entity1, entity2));
 
 export {ctx, width, height};
