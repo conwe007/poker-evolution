@@ -66,6 +66,18 @@ const entity2 = new Entity();
 // entity1.weights[2] = 0.25;
 // entity1.weights[3] = 0.25;
 entity1.weights[4] = 0.75
+entity1.weights[5] = 0.25;
+entity1.weights[6] = 0.25;
+entity1.weights[7] = 0.25;
+entity1.weights[8] = 0.25;
+entity1.weights[9] = 0.25;
+entity1.weights[10] = 0.25;
+entity1.weights[11] = 0.25;
+entity1.weights[12] = 0.25;
+entity1.weights[13] = 0.25;
+entity1.weights[14] = 0.25;
+entity1.weights[15] = 0.25;
+entity1.weights[16] = 0.25;
 
 console.log(ShuffleTest.duel(entity1, entity2));
 
