@@ -54,7 +54,17 @@ function loop()
 // console.log(shuffle_test.toStringStats());
 // shuffle_test.clear();
 
-const simulation = new Simulation()
-simulation.run(100000);
+// const simulation = new Simulation()
+// simulation.run(100000);
+
+const entity1 = new Entity();
+const entity2 = new Entity();
+
+entity1.weights[0] = 0.75;
+entity1.weights[1] = 0.25;
+entity1.weights[2] = 0.25;
+entity1.weights[3] = 0.25;
+
+console.log(ShuffleTest.duel(entity1, entity2));
 
 export {ctx, width, height};

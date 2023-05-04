@@ -43,6 +43,38 @@ export default class ShuffleTest
         }
     }
 
+    static duel(entity1, entity2)
+    {
+        let output = '';
+        
+        let entity1_wins = 0;
+        let entity2_wins = 0;
+        let entity_tie = 0;
+
+        for(let index_trial = 0; index_trial < NUM_TRIALS; index_trial++)
+        {
+            entity1.dealHand();
+            entity2.dealHand();
+
+            if(entity1.hand.hand_rank > entity2.hand.hand_rank)
+            {
+                entity1_wins++;
+            }
+            else if(entity1.hand.hand_rank < entity2.hand.hand_rank)
+            {
+                entity2_wins++;
+            }
+            else
+            {
+                entity_tie++;
+            }
+        }
+
+        output += entity1_wins + ',' + entity2_wins + ',' + entity_tie;
+
+        return output;
+    }
+
     clear()
     {
         for(let index_ranks = 0; index_ranks < NUM_RANKS; index_ranks++)
