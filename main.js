@@ -2,6 +2,7 @@ import Population from './modules/population.js';
 import ShuffleTest from './modules/shuffle_test.js';
 import Simulation from './modules/simulation.js';
 import Entity from './modules/entity.js';
+import Deck from './modules/deck.js';
 
 // setup canvas
 const canvas = document.querySelector('canvas');
@@ -58,6 +59,8 @@ function loop()
 // const simulation = new Simulation()
 // simulation.run(100000);
 
+const deck = new Deck();
+
 const entity1 = new Entity();
 const entity2 = new Entity();
 
@@ -78,7 +81,7 @@ entity1.weights[13] = 0.00;
 entity1.weights[14] = 0.00;
 entity1.weights[15] = 0.00;
 entity1.weights[16] = 0.00;
-
+entity1.dealHand(deck);
 console.log(entity1.toString());
 console.log(entity2.toString());
 console.log(ShuffleTest.duel(entity1, entity2));
