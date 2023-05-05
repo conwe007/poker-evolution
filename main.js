@@ -65,19 +65,19 @@ const entity2 = new Entity();
 // entity1.weights[1] = 0.25;
 // entity1.weights[2] = 0.25;
 // entity1.weights[3] = 0.25;
-entity1.weights[4] = 0.95
-entity1.weights[5] = 0.95;
-entity1.weights[6] = 0.05;
-entity1.weights[7] = 0.05;
-entity1.weights[8] = 0.05;
-entity1.weights[9] = 0.05;
-entity1.weights[10] = 0.05;
-entity1.weights[11] = 0.05;
-entity1.weights[12] = 0.05;
-entity1.weights[13] = 0.05;
-entity1.weights[14] = 0.05;
-entity1.weights[15] = 0.05;
-entity1.weights[16] = 0.05;
+// entity1.weights[4] = 0.95
+// entity1.weights[5] = 0.95;
+// entity1.weights[6] = 0.05;
+// entity1.weights[7] = 0.05;
+// entity1.weights[8] = 0.05;
+// entity1.weights[9] = 0.05;
+// entity1.weights[10] = 0.05;
+// entity1.weights[11] = 0.05;
+// entity1.weights[12] = 0.05;
+// entity1.weights[13] = 0.05;
+// entity1.weights[14] = 0.05;
+// entity1.weights[15] = 0.05;
+// entity1.weights[16] = 0.05;
 
 console.log(entity1.toString());
 console.log(entity2.toString());
