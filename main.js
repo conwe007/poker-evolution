@@ -81,6 +81,9 @@ entity1.weights[13] = 0.00;
 entity1.weights[14] = 0.00;
 entity1.weights[15] = 0.00;
 entity1.weights[16] = 0.00;
+
+deck.shuffleWeighted(entity1.weights);
+console.log(deck.toString());
 entity1.dealHand(deck);
 console.log(entity1.toString());
 console.log(entity2.toString());
